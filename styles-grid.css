@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.card-container {
+    perspective: 1000px;
+    width: 350px;
+    height: 200px;
+    position: relative;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.card-front {
+    background: white;
+    display: grid;
+    grid-template-areas: 
+        "content";
+    place-items: center;
+}
+
+.card-back {
+    background: white;
+    transform: rotateY(180deg);
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.grid-decorative-front {
+    grid-area: content;
+    display: grid;
+    grid-template-areas: 
+        "blue pink"
+        "yellow .";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.blue.grid-circle {
+    grid-area: blue;
+    align-self: start;
+    justify-self: start;
+    margin-top: -20px;
+    margin-left: -20px;
+    width: 80px;
+    height: 80px;
+    background: #4166f5;
+    border-radius: 50%;
+}
+
+.yellow.grid-circle {
+    grid-area: yellow;
+    align-self: end;
+    justify-self: start;
+    margin-bottom: -10px;
+    margin-left: -10px;
+    width: 60px;
+    height: 60px;
+    background: #168340;
+    border-radius: 50%;
+}
+
+.pink.grid-circle {
+    grid-area: pink;
+    align-self: center;
+    justify-self: end;
+    margin-right: 30px;
+    width: 40px;
+    height: 40px;
+    background: #90305d;
+    border-radius: 50%;
+}
+
+.grid-decorative-back {
+    display: grid;
+    grid-template-areas: 
+        "top-dots"
+        "bottom-dots";
+    grid-template-rows: auto 1fr auto;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.grid-decorative-back .yellow.grid-circle {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 80px;
+    height: 80px;
+    background: #168340;
+    border-radius: 50%;
+}
+
+.grid-decorative-back .pink.grid-circle {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    width: 70px;
+    height: 70px;
+    background: #90305d;
+    border-radius: 50%;
+}
+
+.grid-content-front {
+    grid-area: content;
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 5px;
+    justify-items: center;
+    align-items: center;
+    z-index: 2;
+    position: relative;
+}
+
+.grid-content-back {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 12px;
+    justify-items: center;
+    align-items: center;
+    z-index: 2;
+    position: relative;
+    padding: 25px;
+    height: 100%;
+    place-content: start center;
+
+}
+
+.grid-dots {
+    grid-area: content;
+    background: radial-gradient(circle, #333 2px, transparent 2px);
+    background-size: 10px 10px;
+    opacity: 0.1;
+    width: 100%;
+    height: 100%;
+}
+
+.grid-top-dots {
+    grid-area: top-dots;
+    background: radial-gradient(circle, #333 2px, transparent 2px);
+    background-size: 10px 10px;
+    opacity: 0.1;
+    height: 20px;
+    margin: 10px;
+    width: calc(100% - 20px);
+}
+
+.grid-bottom-dots {
+    grid-area: bottom-dots;
+    background: radial-gradient(circle, #333 2px, transparent 2px);
+    background-size: 10px 10px;
+    opacity: 0.1;
+    height: 20px;
+    margin: 10px;
+    align-self: end;
+    width: calc(100% - 20px);
+}
+
+.name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.title {
+    font-size: 16px;
+    color: #7f8c8d;
+}
+
+.full-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.phone {
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+.linktree-btn {
+    display: grid;
+    place-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #4166f5, #168340);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 5px;
+}
+
+.linktree-btn:hover {
+    background: linear-gradient(45deg, #168340, #4166f5);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
